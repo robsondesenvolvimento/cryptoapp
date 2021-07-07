@@ -1,0 +1,17 @@
+[
+   {
+      "client":"cripto",
+      "operation":"validate_cnh",
+      "expire":"2021-12-30"
+   },
+   {
+      "client":"cripto",
+      "operation":"validate_licence",
+      "expire":"2021-12-30"
+   },
+   {
+      "client":"cripto",
+      "operation":"operation_batch",
+      "expire":"2021-12-30"
+   }
+]
