@@ -36,7 +36,7 @@ namespace CryptoZylix.WindowsApp
 
         // Key container name for
         // private/public key value pair.
-        const string keyName = "Key01";
+        string keyName = "685f1732-e34d-4aec-826b-fc86ad03e51b";
 
         public Form1()
         {
@@ -318,6 +318,12 @@ namespace CryptoZylix.WindowsApp
                 label1.Text = "Key: " + cspp.KeyContainerName + " - Public Only";
             else
                 label1.Text = "Key: " + cspp.KeyContainerName + " - Full Key Pair";
+        }
+
+        private void buttonGuidGenerate_Click(object sender, EventArgs e)
+        {
+            keyName = Guid.NewGuid().ToString();
+            textBoxGuid.Text = $"{keyName}";
         }
     }
 }

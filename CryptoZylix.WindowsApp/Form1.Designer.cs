@@ -38,6 +38,8 @@ namespace CryptoZylix.WindowsApp
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.buttonGuidGenerate = new System.Windows.Forms.Button();
+            this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonEncryptFile
@@ -103,7 +105,7 @@ namespace CryptoZylix.WindowsApp
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(452, 212);
+            this.label1.Location = new System.Drawing.Point(281, 187);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(109, 15);
             this.label1.TabIndex = 6;
@@ -117,11 +119,31 @@ namespace CryptoZylix.WindowsApp
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
+            // buttonGuidGenerate
+            // 
+            this.buttonGuidGenerate.Location = new System.Drawing.Point(116, 96);
+            this.buttonGuidGenerate.Name = "buttonGuidGenerate";
+            this.buttonGuidGenerate.Size = new System.Drawing.Size(144, 23);
+            this.buttonGuidGenerate.TabIndex = 7;
+            this.buttonGuidGenerate.Text = "Gerar Guid";
+            this.buttonGuidGenerate.UseVisualStyleBackColor = true;
+            this.buttonGuidGenerate.Click += new System.EventHandler(this.buttonGuidGenerate_Click);
+            // 
+            // textBoxGuid
+            // 
+            this.textBoxGuid.Location = new System.Drawing.Point(281, 96);
+            this.textBoxGuid.Name = "textBoxGuid";
+            this.textBoxGuid.Size = new System.Drawing.Size(244, 23);
+            this.textBoxGuid.TabIndex = 9;
+            this.textBoxGuid.Text = "685f1732-e34d-4aec-826b-fc86ad03e51b";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxGuid);
+            this.Controls.Add(this.buttonGuidGenerate);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonGetPrivateKey);
             this.Controls.Add(this.buttonImportPublicKey);
@@ -147,6 +169,8 @@ namespace CryptoZylix.WindowsApp
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.Button buttonGuidGenerate;
+        private System.Windows.Forms.TextBox textBoxGuid;
     }
 }
 
