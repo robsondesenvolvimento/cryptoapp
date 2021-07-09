@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CryptoZylix.WindowsApp.Services;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,7 @@ using System.Windows.Forms;
 /* 
  * Reference:
  * https://docs.microsoft.com/pt-br/dotnet/standard/security/walkthrough-creating-a-cryptographic-application
+ * https://docs.microsoft.com/pt-br/aspnet/core/security/data-protection/using-data-protection?view=aspnetcore-5.0
  * https://www.embarcados.com.br/criptografia-aes/
 */
 
@@ -36,11 +39,21 @@ namespace CryptoZylix.WindowsApp
 
         // Key container name for
         // private/public key value pair.
-        string keyName = "685f1732-e34d-4aec-826b-fc86ad03e51b";
+        string keyName = "9f726ebf-b21f-42a3-8f93-83f870814612";
+
+        private readonly DataProtectService _dataProtectedService;
 
         public Form1()
         {
             InitializeComponent();
+
+            // add data protection services
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddDataProtection();
+            var services = serviceCollection.BuildServiceProvider();
+
+            // create an instance of MyClass using the service provider
+            _dataProtectedService = ActivatorUtilities.CreateInstance<DataProtectService>(services);
         }
 
         private void buttonCreateAsmKeys_Click(object sender, EventArgs e)
@@ -325,5 +338,72 @@ namespace CryptoZylix.WindowsApp
             keyName = Guid.NewGuid().ToString();
             textBoxGuid.Text = $"{keyName}";
         }
+
+        private void buttonDataprotectionCrypt_Click(object sender, EventArgs e)
+        {
+            // Display a dialog box to select a file to encrypt.
+            openFileDialog1.InitialDirectory = SrcFolder;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string fName = openFileDialog1.FileName;
+                if (fName != null)
+                {
+                    FileInfo fInfo = new FileInfo(fName);
+                    // Pass the file name without the path.
+                    string name = fInfo.FullName;
+                    EncryptFileProtected(name);
+                }
+            }
+        }
+
+        private void EncryptFileProtected(string inFile)
+        {
+
+            int startFileName = inFile.LastIndexOf("\\") + 1;
+            // Change the file's extension to ".enc"
+            string outFile = EncrFolder + inFile.Substring(startFileName, inFile.LastIndexOf(".") - startFileName) + ".enc";
+
+            var fileIn = File.ReadAllText(inFile);
+
+            
+            var protectedInformation = _dataProtectedService.ProtectedData(fileIn);
+            //
+
+            using (var st = new StreamWriter(outFile))
+            {
+                st.Write(protectedInformation);
+            }
+        }
+
+        private void buttonDataprotectionDeCrypt_Click(object sender, EventArgs e)
+        {            
+            // Display a dialog box to select the encrypted file.
+            openFileDialog2.InitialDirectory = EncrFolder;
+            if (openFileDialog2.ShowDialog() == DialogResult.OK)
+            {
+                string fName = openFileDialog2.FileName;
+                if (fName != null)
+                {
+                    FileInfo fi = new FileInfo(fName);
+                    string name = fi.Name;
+                    DecryptFileProtected(name);
+                }
+            }
+        }
+
+        private void DecryptFileProtected(string inFile)
+        {
+            // Construct the file name for the decrypted file.
+            string outFile = DecrFolder + inFile.Substring(0, inFile.LastIndexOf(".")) + ".txt";
+
+            var protectedInformation = File.ReadAllText(EncrFolder + inFile);
+
+            var unProtectedInformation = _dataProtectedService.UnProtectedData(protectedInformation);
+
+            using (var st = new StreamWriter(outFile))
+            {
+                st.Write(unProtectedInformation);
+            }
+        }        
     }
 }
