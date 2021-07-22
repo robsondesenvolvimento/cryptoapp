@@ -1,4 +1,7 @@
 ﻿using CryptoZylix.WindowsApp.Services;
+using DeviceId;
+using DeviceId.Encoders;
+using DeviceId.Formatters;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -404,6 +407,18 @@ namespace CryptoZylix.WindowsApp
             {
                 st.Write(unProtectedInformation);
             }
-        }        
+        }
+
+        private void buttonIdDispositivo_Click(object sender, EventArgs e)
+        {
+            string deviceId = new DeviceIdBuilder()
+                    .AddMachineName()
+                    .AddProcessorId()
+                    .AddMotherboardSerialNumber()
+                    .AddSystemDriveSerialNumber()
+                    .UseFormatter(new HashDeviceIdFormatter(() => SHA256.Create(), new Base64UrlByteArrayEncoder()))
+                    .ToString();
+            label2.Text = deviceId;
+        }
     }
 }

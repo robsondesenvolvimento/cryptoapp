@@ -42,6 +42,8 @@ namespace CryptoZylix.WindowsApp
             this.textBoxGuid = new System.Windows.Forms.TextBox();
             this.buttonDataprotectionCrypt = new System.Windows.Forms.Button();
             this.buttonDataprotectionDeCrypt = new System.Windows.Forms.Button();
+            this.buttonIdDispositivo = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonEncryptFile
@@ -159,11 +161,32 @@ namespace CryptoZylix.WindowsApp
             this.buttonDataprotectionDeCrypt.UseVisualStyleBackColor = true;
             this.buttonDataprotectionDeCrypt.Click += new System.EventHandler(this.buttonDataprotectionDeCrypt_Click);
             // 
+            // buttonIdDispositivo
+            // 
+            this.buttonIdDispositivo.Location = new System.Drawing.Point(146, 326);
+            this.buttonIdDispositivo.Name = "buttonIdDispositivo";
+            this.buttonIdDispositivo.Size = new System.Drawing.Size(156, 23);
+            this.buttonIdDispositivo.TabIndex = 12;
+            this.buttonIdDispositivo.Text = "Id do dispositivo";
+            this.buttonIdDispositivo.UseVisualStyleBackColor = true;
+            this.buttonIdDispositivo.Click += new System.EventHandler(this.buttonIdDispositivo_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(323, 330);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 15);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Id do dispositivo: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.buttonIdDispositivo);
             this.Controls.Add(this.buttonDataprotectionDeCrypt);
             this.Controls.Add(this.buttonDataprotectionCrypt);
             this.Controls.Add(this.textBoxGuid);
@@ -197,6 +220,8 @@ namespace CryptoZylix.WindowsApp
         private System.Windows.Forms.TextBox textBoxGuid;
         private System.Windows.Forms.Button buttonDataprotectionCrypt;
         private System.Windows.Forms.Button buttonDataprotectionDeCrypt;
+        private System.Windows.Forms.Button buttonIdDispositivo;
+        private System.Windows.Forms.Label label2;
     }
 }
 
