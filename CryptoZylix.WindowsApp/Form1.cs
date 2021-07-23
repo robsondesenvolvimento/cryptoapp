@@ -1,4 +1,5 @@
-﻿using CryptoZylix.WindowsApp.Services;
+﻿using CryptoZylix.WindowsApp.Helpers;
+using CryptoZylix.WindowsApp.Services;
 using DeviceId;
 using DeviceId.Encoders;
 using DeviceId.Formatters;
@@ -10,6 +11,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Management;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +47,7 @@ namespace CryptoZylix.WindowsApp
         string keyName = "9f726ebf-b21f-42a3-8f93-83f870814612";
 
         private readonly DataProtectService _dataProtectedService;
+       
 
         public Form1()
         {
@@ -412,13 +415,17 @@ namespace CryptoZylix.WindowsApp
         private void buttonIdDispositivo_Click(object sender, EventArgs e)
         {
             string deviceId = new DeviceIdBuilder()
-                    .AddMachineName()
+                    //.AddMachineName()
                     .AddProcessorId()
-                    .AddMotherboardSerialNumber()
-                    .AddSystemDriveSerialNumber()
-                    .UseFormatter(new HashDeviceIdFormatter(() => SHA256.Create(), new Base64UrlByteArrayEncoder()))
+                    .AddMacAddress()
+                    //.AddMotherboardSerialNumber()
+                    //.AddSystemDriveSerialNumber()
+                    .UseFormatter(new StringDeviceIdFormatter(new PlainTextDeviceIdComponentEncoder()))
                     .ToString();
-            label2.Text = deviceId;
+            textBoxIdDispositivo.Text = deviceId;
+            var montaString = $"ZYLIX+{textBoxCodigo.Text}+{textBoxIdDispositivo.Text}";
+            textBoxMontaString.Text = montaString;
+            textBoxStringCodificada.Text = montaString.GenerateHashSha256();
         }
     }
 }

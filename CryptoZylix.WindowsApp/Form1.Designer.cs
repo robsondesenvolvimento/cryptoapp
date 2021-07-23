@@ -43,7 +43,15 @@ namespace CryptoZylix.WindowsApp
             this.buttonDataprotectionCrypt = new System.Windows.Forms.Button();
             this.buttonDataprotectionDeCrypt = new System.Windows.Forms.Button();
             this.buttonIdDispositivo = new System.Windows.Forms.Button();
+            this.textBoxCodigo = new System.Windows.Forms.TextBox();
+            this.textBoxIdDispositivo = new System.Windows.Forms.TextBox();
+            this.textBoxMontaString = new System.Windows.Forms.TextBox();
+            this.textBoxStringCodificada = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonEncryptFile
@@ -163,29 +171,102 @@ namespace CryptoZylix.WindowsApp
             // 
             // buttonIdDispositivo
             // 
-            this.buttonIdDispositivo.Location = new System.Drawing.Point(146, 326);
+            this.buttonIdDispositivo.Location = new System.Drawing.Point(287, 491);
             this.buttonIdDispositivo.Name = "buttonIdDispositivo";
-            this.buttonIdDispositivo.Size = new System.Drawing.Size(156, 23);
+            this.buttonIdDispositivo.Size = new System.Drawing.Size(594, 23);
             this.buttonIdDispositivo.TabIndex = 12;
             this.buttonIdDispositivo.Text = "Id do dispositivo";
             this.buttonIdDispositivo.UseVisualStyleBackColor = true;
             this.buttonIdDispositivo.Click += new System.EventHandler(this.buttonIdDispositivo_Click);
             // 
+            // textBoxCodigo
+            // 
+            this.textBoxCodigo.Location = new System.Drawing.Point(287, 375);
+            this.textBoxCodigo.Name = "textBoxCodigo";
+            this.textBoxCodigo.Size = new System.Drawing.Size(594, 23);
+            this.textBoxCodigo.TabIndex = 14;
+            this.textBoxCodigo.Text = "2-123";
+            // 
+            // textBoxIdDispositivo
+            // 
+            this.textBoxIdDispositivo.Location = new System.Drawing.Point(287, 404);
+            this.textBoxIdDispositivo.Name = "textBoxIdDispositivo";
+            this.textBoxIdDispositivo.Size = new System.Drawing.Size(594, 23);
+            this.textBoxIdDispositivo.TabIndex = 16;
+            // 
+            // textBoxMontaString
+            // 
+            this.textBoxMontaString.Location = new System.Drawing.Point(287, 433);
+            this.textBoxMontaString.Name = "textBoxMontaString";
+            this.textBoxMontaString.Size = new System.Drawing.Size(594, 23);
+            this.textBoxMontaString.TabIndex = 17;
+            // 
+            // textBoxStringCodificada
+            // 
+            this.textBoxStringCodificada.Location = new System.Drawing.Point(287, 462);
+            this.textBoxStringCodificada.Name = "textBoxStringCodificada";
+            this.textBoxStringCodificada.Size = new System.Drawing.Size(594, 23);
+            this.textBoxStringCodificada.TabIndex = 18;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(323, 330);
+            this.label2.Location = new System.Drawing.Point(146, 383);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 15);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Id do dispositivo: ";
+            this.label2.Size = new System.Drawing.Size(80, 15);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Chave licença";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(146, 412);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 15);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Id do dispositivo";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(146, 441);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 15);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Composição dados";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(146, 470);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(120, 15);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Hash SHA256 Base 64";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(287, 347);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(265, 15);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "ZYLIX + {CHAVE DE LICENÇA} + {MAC ADDRESS}";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1040, 638);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBoxStringCodificada);
+            this.Controls.Add(this.textBoxMontaString);
+            this.Controls.Add(this.textBoxIdDispositivo);
+            this.Controls.Add(this.textBoxCodigo);
             this.Controls.Add(this.buttonIdDispositivo);
             this.Controls.Add(this.buttonDataprotectionDeCrypt);
             this.Controls.Add(this.buttonDataprotectionCrypt);
@@ -221,7 +302,15 @@ namespace CryptoZylix.WindowsApp
         private System.Windows.Forms.Button buttonDataprotectionCrypt;
         private System.Windows.Forms.Button buttonDataprotectionDeCrypt;
         private System.Windows.Forms.Button buttonIdDispositivo;
+        private System.Windows.Forms.TextBox textBoxCodigo;
+        private System.Windows.Forms.TextBox textBoxIdDispositivo;
+        private System.Windows.Forms.TextBox textBoxMontaString;
+        private System.Windows.Forms.TextBox textBoxStringCodificada;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
     }
 }
 
